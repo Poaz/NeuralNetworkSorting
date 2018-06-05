@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 def counting_sort(input_arr, exp1):
     n = len(input_arr)
@@ -47,11 +48,31 @@ def radix_sort(input_arr):
         exp *= 10
 
 
+def bubbleSort(arr):
+    n = len(arr)
+
+    # Traverse through all array elements
+    for i in range(n):
+
+        # Last i elements are already in place
+        for j in range(0, n - i - 1):
+
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+
 arr = np.loadtxt("TraningDataX.txt", delimiter=",")
 arr = arr.ravel()
 arr = arr.astype(int)
-
+start_time = time.time()
 radix_sort(arr)
+#bubbleSort(arr)
+print("--- %s seconds ---" % (time.time() - start_time))
 
-for i in range(len(arr)):
-    print(arr[i]),
+#for i in range(len(arr)):
+#    print(arr[i]),
+
+
